@@ -1,4 +1,5 @@
 export * from "./constants";
+export * from "./errors";
 export {
   default as Request,
   settings as requestSettings,
