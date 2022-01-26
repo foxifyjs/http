@@ -23,7 +23,7 @@ describe("with canonicalized mime types", () => {
           res.send({ message: "hey" });
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       if (!err.types) throw err;
 
       res.status(err.status).send(`Supports: ${err.types.join(", ")}`);
@@ -45,7 +45,7 @@ describe("with extnames", () => {
           res.send({ message: "hey" });
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       res.status(err.status).send(`Supports: ${err.types.join(", ")}`);
     }
   });
@@ -65,7 +65,7 @@ describe("with parameters", () => {
           res.send({ message: "hey" });
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       res.status(err.status).send(`Supports: ${err.types.join(", ")}`);
     }
   });
