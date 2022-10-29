@@ -72,7 +72,7 @@ export default class Request extends IncomingMessage {
 
     // Note: X-Forwarded-Proto is normally only ever a
     //       single value, but this is to be safe.
-    const header = this.get("X-Forwarded-Proto") || proto;
+    const header = this.get("x-forwarded-proto") || proto;
 
     const index = header.indexOf(",");
 
@@ -254,10 +254,10 @@ export default class Request extends IncomingMessage {
    * @example
    * req.get("Something"); // => undefined
    */
-  public get<T extends string>(name: T): HeadersI[Lowercase<T>] {
-    name = name.toLowerCase() as T;
+  public get<Header extends Extract<keyof HeadersI, string>>(name: Header | Uppercase<Header>): HeadersI[Header] {
+    name = name.toLowerCase() as Header;
 
-    switch (name as Lowercase<T>) {
+    switch (name) {
       case "referer":
         return this.headers.referer || this.headers.referrer;
       case "referrer":

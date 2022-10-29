@@ -49,7 +49,7 @@ interface Response extends ServerResponse {
   get<T extends keyof HeadersI>(header: T): HeadersI[T];
 }
 
-class Response extends ServerResponse {
+class Response extends ServerResponse<Request> {
   public stringify!: {
     [statusCode in StatusT]?: StringifyT;
   };

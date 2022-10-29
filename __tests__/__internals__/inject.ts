@@ -28,7 +28,7 @@ export default function inject(
     {
       ...options,
       Request,
-      Response,
+      Response: Response as never, // TODO: fix types
     },
   );
 }
